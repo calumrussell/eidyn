@@ -1,0 +1,16 @@
+name: 'chess'
+version: '1.0.0'
+config-version: 2
+
+profile: 'chess'
+
+model-paths: ["models"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+models:
+  chess:
+    elo:
+      +materialized: view

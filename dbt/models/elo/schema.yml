@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: win_probs 
+    description: "Gives the win probability implied by the difference in elo for each side"
+    columns:
+      - name: hash
+        description: "Lichess hash of game"
+        tests:
+          - unique
+          - not_null
+
+  - name: rating_change
+    description: "Uses the win probability to calculate the elo won/lost for each side"
+    columns:
+      - name: hash
+        description: "Lichess hash of game"
+        tests:
+          - unique
+          - not_null
+
+  - name: rating_range
+    description: "Creates categorical variables for black and white player elo"
+    columns:
+      - name: hash
+        tests:
+          - unique
+          - not_null
+
+  - name: avg_rating_change_by_eco
+    description: "Average rating changes for black and white players over ECO opening"
+    columns:
+      - name: hash
+        tests:
+          - unique
+          - not_null
+ 
