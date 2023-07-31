@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  eidynapp:
+    container_name: eidynapp
+    build:
+      context: ./next
+    env_file:
+      - ./next/.env
+
+  eidyntunnel:
+    container_name: eidyntunnel
+    image: cloudflare/cloudflared
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=
+
+networks:
+  default:
+    external:
+      name: eidyn
