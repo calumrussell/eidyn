@@ -3,7 +3,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 interface HorizontalBinarySelectorProps {
   titleOne: string,
   titleTwo: string,
@@ -39,8 +38,8 @@ export const HorizontalBinarySelector = ({titleOne, titleTwo, selected, selectFu
   return (
     <div style={{width: '100%'}}>
       <HorizontalBinarySelectorWrapper>
-        <HorizontalBinarySelectorBox onClick={(ev => onClickBox(ev, 0))} selected={selected === 0}>{titleOne}</HorizontalBinarySelectorBox>
-        <HorizontalBinarySelectorBox onClick={(ev => onClickBox(ev, 1))} selected={selected === 1}>{titleTwo}</HorizontalBinarySelectorBox>
+        <HorizontalBinarySelectorBox data-testid="titleOne" onClick={(ev => onClickBox(ev, 0))} selected={selected === 0}>{titleOne}</HorizontalBinarySelectorBox>
+        <HorizontalBinarySelectorBox data-testid="titleTwo" onClick={(ev => onClickBox(ev, 1))} selected={selected === 1}>{titleTwo}</HorizontalBinarySelectorBox>
       </HorizontalBinarySelectorWrapper>
     </div>
   )
