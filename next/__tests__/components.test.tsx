@@ -22,8 +22,23 @@ describe('HorizontalBinarySelector', () => {
 
     expect(callback).toHaveBeenCalledTimes(3);
   })
+
   it('errors with invalid input', () => {
-  })
-  it('toggles selected attr when passed new selected state', () => {
+    //Tedious but this component really doesn't work at all without two choices and other options
+    // @ts-ignore
+    render(<HorizontalBinarySelector titleOne='test' titleTwo='test1' selected={1} />);
+    expect(screen.queryByTestId('titleOne')).not.toBeInTheDocument();
+
+    // @ts-ignore
+    render(<HorizontalBinarySelector titleOne='test' titleTwo='test1' selectFunc={(sel) => {}} />);
+    expect(screen.queryByTestId('titleOne')).not.toBeInTheDocument();
+
+    // @ts-ignore
+    render(<HorizontalBinarySelector titleOne='test' selected={0} selectFunc={(sel) => {}} />);
+    expect(screen.queryByTestId('titleOne')).not.toBeInTheDocument();
+    
+    // @ts-ignore
+    render(<HorizontalBinarySelector titleTwo='test1' selected={0} selectFunc={(sel) => {}} />);
+    expect(screen.queryByTestId('titleOne')).not.toBeInTheDocument();
   })
 })

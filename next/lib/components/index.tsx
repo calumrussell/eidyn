@@ -3,10 +3,12 @@
 import React from "react";
 import styled from "styled-components";
 
+type HorizontalBinarySelectorSelectedState = 0 | 1;
+
 interface HorizontalBinarySelectorProps {
   titleOne: string,
   titleTwo: string,
-  selected: number,
+  selected: HorizontalBinarySelectorSelectedState,
   selectFunc: (selected: number) => void,
 }
 
@@ -22,6 +24,7 @@ interface HorizontalBinarySelectorBoxProps {
 
 export const HorizontalBinarySelectorBox = styled.div<HorizontalBinarySelectorBoxProps>`
   flex-basis: 50%;
+  cursor: pointer;
   border: 1px solid var(--off-background-color);
   width:100%;
   height: 2rem;
@@ -33,6 +36,11 @@ export const HorizontalBinarySelectorBox = styled.div<HorizontalBinarySelectorBo
 export const HorizontalBinarySelector = ({titleOne, titleTwo, selected, selectFunc}: HorizontalBinarySelectorProps) => {
   const onClickBox = (ev: React.MouseEvent<HTMLDivElement>, pos: number) => {
     selectFunc(pos);
+  }
+
+  if (titleOne === undefined || titleTwo === undefined || selected === undefined || selectFunc === undefined) {
+    //Returns invalid state because calling code has an unrecoverable error
+    return <></>
   }
 
   return (
