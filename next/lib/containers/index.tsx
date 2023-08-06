@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { HorizontalBinarySelector } from "@Lib/components";
@@ -153,7 +153,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
                 if ("avg_white_elo_change" in d) {
                   if (d.white_rating_range === ratingRange) {
                    return (
-                      <tr key={i}>
+                      <tr key={i} data-testid="data-row">
                         <td><Link href={link}>{name}</Link></td>
                         <td>{roundNumber(d.avg_white_elo_change ? d.avg_white_elo_change : 0.0)}</td>
                         <td>{formatNumber(d.game_count)}</td>
@@ -164,7 +164,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
                 if ("avg_black_elo_change" in d) {
                   if (d.black_rating_range === ratingRange) {
                     return (
-                      <tr key={i}>
+                      <tr key={i} data-testid="data-row">
                         <td><Link href={link}>{name}</Link></td>
                         <td>{roundNumber(d.avg_black_elo_change ? d.avg_black_elo_change : 0.0)}</td>
                         <td>{formatNumber(d.game_count)}</td>
