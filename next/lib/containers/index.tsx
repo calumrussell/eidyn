@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { HorizontalBinarySelector } from "@Lib/components";
@@ -114,7 +114,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
         <fieldset>
           <p>
             <label htmlFor="form-select-rating-range">Select Rating Range:</label>
-            <select id="form-select-rating-range" onChange={switchRatingRange} value={ratingRange}>
+            <select data-testid="form-select-rating-range" id="form-select-rating-range" onChange={switchRatingRange} value={ratingRange}>
               {
                 groups.map((g, i) => <option key={i} value={i}>{g}</option>)
               }
@@ -122,7 +122,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
           </p>
           <p>
             <label htmlFor="form-select-datasource">Select Data:</label>
-            <select id="form-select-datasource" onChange={switchDataSource} value={dataSource}>
+            <select data-testid="form-select-datasource" id="form-select-datasource" onChange={switchDataSource} value={dataSource}>
               {
                 [0,1].map((g, i) => <option key={i} value={i}>{dataSources[g]}</option>)
               }
@@ -130,7 +130,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
           </p>
           <p>
             <label htmlFor="form-input-min-games">Minimum Games Filter:</label>
-            <input id="form-input-min-games" value={minGames} type="number" min={0} max={100000} step={10000} onChange={switchMinGames} />
+            <input data-testid="form-input-min-games" id="form-input-min-games" value={minGames} type="number" min={0} max={100000} step={10000} onChange={switchMinGames} />
           </p>
         </fieldset>
       </form>
@@ -153,7 +153,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
                 if ("avg_white_elo_change" in d) {
                   if (d.white_rating_range === ratingRange) {
                    return (
-                      <tr key={i}>
+                      <tr key={i} data-testid="data-row">
                         <td><Link href={link}>{name}</Link></td>
                         <td>{roundNumber(d.avg_white_elo_change ? d.avg_white_elo_change : 0.0)}</td>
                         <td>{formatNumber(d.game_count)}</td>
@@ -164,7 +164,7 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
                 if ("avg_black_elo_change" in d) {
                   if (d.black_rating_range === ratingRange) {
                     return (
-                      <tr key={i}>
+                      <tr key={i} data-testid="data-row">
                         <td><Link href={link}>{name}</Link></td>
                         <td>{roundNumber(d.avg_black_elo_change ? d.avg_black_elo_change : 0.0)}</td>
                         <td>{formatNumber(d.game_count)}</td>
