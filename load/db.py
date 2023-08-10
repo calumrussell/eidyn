@@ -83,8 +83,6 @@ if __name__ == "__main__":
         last_move = groups[9]
         result = groups[6] 
         hash = groups[10]
-        prob = groups[11]
-        white_win = groups[12]
         if result == "1-0":
             result = b"10"
         elif result == "0-1":
@@ -110,9 +108,7 @@ if __name__ == "__main__":
                 eco,
                 last_move,
                 res,
-                hash,
-                prob,
-                win)
+                hash)
                 values
                 """
             count+=1
@@ -135,8 +131,6 @@ if __name__ == "__main__":
                 '{eco}',
                 {last_move},
                 {result},
-                '{hash}',
-                {prob},
-                {True if white_win == 1 else False}
+                '{hash}'
                 ),"""
             count+=1
