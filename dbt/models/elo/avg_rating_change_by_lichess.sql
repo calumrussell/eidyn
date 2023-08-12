@@ -17,5 +17,6 @@ select
     left join {{ ref('win_probs') }} using(hash)
     left join {{ ref('rating_change') }} using(hash)
     left join openings on matches.opening=openings.id
+    where name != '?'
     group by opening, name
     order by avg_white_elo_change desc

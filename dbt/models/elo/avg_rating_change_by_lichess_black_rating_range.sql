@@ -18,5 +18,6 @@ select
     left join {{ ref('rating_change') }} using(hash)
     left join {{ ref('rating_range') }} using(hash)
     left join openings on openings.id=matches.opening
+    where name != '?'
     group by opening, name, black_rating_range
     order by black_rating_range asc 
