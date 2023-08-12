@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-type HorizontalBinarySelectorSelectedState = 0 | 1;
+export type HorizontalBinarySelectorSelectedState = 0 | 1;
 
 interface HorizontalBinarySelectorProps {
   titleOne: string,

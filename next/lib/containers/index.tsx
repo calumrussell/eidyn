@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { HorizontalBinarySelector } from "@Lib/components";
+import { HorizontalBinarySelector, HorizontalBinarySelectorSelectedState } from "@Lib/components";
 import { eco_codes, openings, top_eco_by_black_rating_range, top_eco_by_white_rating_range, top_lichess_by_black_rating_range, top_lichess_by_white_rating_range } from "@prisma/client";
 import Link from "next/link";
 import { formatNumber, roundNumber } from "@Lib/functions";
@@ -18,11 +18,14 @@ interface OpeningGroupSelectorProps {
 }
 
 export const OpeningGroupSelector = ({eco_codes, lichess_openings}: OpeningGroupSelectorProps) => {
-  const [selected, setSelected] = useState(0);
+  const [selected, setSelected] = useState<HorizontalBinarySelectorSelectedState>(0);
 
   const selectFunc = (pos: number) => {
     if (pos != selected) {
-      setSelected(pos);
+      if (pos === 0 || pos === 1){
+        //Redundant but provides strong guarantee about value for TS
+        setSelected(pos);
+      }
     }
   }
 
