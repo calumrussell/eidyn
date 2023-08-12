@@ -2,15 +2,15 @@
     config(
         materialized='table',
         indexes = [
-            {'columns': ['eco', 'black_rating_range'], 'unique': True},
+            {'columns': ['opening_id', 'black_rating_range'], 'unique': True},
         ],
-        post_hook = "alter table top_eco_by_black_rating_range alter column eco set not null; alter table top_eco_by_black_rating_range alter column black_rating_range set not null",
+        post_hook = "alter table top_eco_by_black_rating_range alter column opening_id set not null; alter table top_eco_by_black_rating_range alter column black_rating_range set not null",
     ) 
 }}
 
 select 
     avg_black_elo_change,
-    eco,
+    opening_id,
     black_rating_range,
     game_count,
     name,
