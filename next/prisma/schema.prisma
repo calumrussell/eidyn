@@ -11,7 +11,7 @@ model avg_rating_change_by_eco {
   avg_white_elo_change Float?
   avg_black_elo_change Float?
   game_count           Int?
-  opening_id           String  @unique(map: "d1f266b9b7c2bc83d7bbe7b9f81ec80a") @db.Char
+  opening_id           String  @unique(map: "be04e8a1d67fd948b9ff627e3b383087") @db.Char
   name                 String?
 }
 
@@ -24,7 +24,7 @@ model avg_rating_change_by_eco_black_rating_range {
   name                 String?
   moves                String?
 
-  @@unique([opening_id, black_rating_range], map: "1739d68132039923833ccd0bb1759e9f")
+  @@unique([opening_id, black_rating_range], map: "50f1c218c18c68a9b42528fd5cc2e5f1")
 }
 
 model avg_rating_change_by_eco_white_rating_range {
@@ -36,14 +36,14 @@ model avg_rating_change_by_eco_white_rating_range {
   name                 String?
   moves                String?
 
-  @@unique([opening_id, white_rating_range], map: "84322457b05c5c65d83b94323fa35500")
+  @@unique([opening_id, white_rating_range], map: "1324c94f6f597ebe08af83d2d284b286")
 }
 
 model avg_rating_change_by_lichess {
   avg_white_elo_change Float?
   avg_black_elo_change Float?
   game_count           Int?
-  opening_id           Int     @unique(map: "e771b150ca79470680a810a5bc7e390c") @db.SmallInt
+  opening_id           Int     @unique(map: "8fad4cb27f9898221a1559abb6d85a0c") @db.SmallInt
   name                 String?
 }
 
@@ -54,7 +54,7 @@ model avg_rating_change_by_lichess_black_rating_range {
   name                 String?
   black_rating_range   Int
 
-  @@unique([opening_id, black_rating_range], map: "ba0a10cbb249cbb4256a08ce6b6c1111")
+  @@unique([opening_id, black_rating_range], map: "a6552f6a2bcbd96fc1d6a666bc16ef99")
 }
 
 model avg_rating_change_by_lichess_white_rating_range {
@@ -64,11 +64,11 @@ model avg_rating_change_by_lichess_white_rating_range {
   name                 String?
   white_rating_range   Int
 
-  @@unique([opening_id, white_rating_range], map: "f922df423e02e07a466490cad6cf863c")
+  @@unique([opening_id, white_rating_range], map: "c08fbca6a7995ae02f05ee2bcd0e4768")
 }
 
 model eco_codes {
-  eco  String  @unique(map: "074a557fe3e971b02b44f2cec85101d2") @db.Char
+  eco  String  @unique(map: "c8cc2f8a64423abfcc89f30a8ff0ff05") @db.Char
   name String?
 }
 
@@ -117,13 +117,13 @@ model openings {
 model rating_change {
   white_elo_change Float?
   black_elo_change Float?
-  hash             String @unique(map: "2c1dba202a9e4b4378aba703e1d1c1ba")
+  hash             String @unique(map: "f77a8a8e98bc1083c149eb89efb31205")
 }
 
 model rating_range {
   black_rating_range Int?
   white_rating_range Int?
-  hash               String @unique(map: "34e20b3d474bbf34ae0e3ba5aea3ede5")
+  hash               String @unique(map: "f7bf06a6c61319161911e4533f2e835c")
 }
 
 model time {
@@ -138,9 +138,9 @@ model top_eco_by_black_rating_range {
   black_rating_range   Int
   game_count           Int?
   name                 String?
-  rank                 BigInt?
+  rank                 Int?
 
-  @@unique([opening_id, black_rating_range], map: "b5d950602a83ad4ba3c2434fee4c2838")
+  @@unique([opening_id, black_rating_range], map: "e901d118f76ae986acfbcad54b067344")
 }
 
 model top_eco_by_white_rating_range {
@@ -149,9 +149,9 @@ model top_eco_by_white_rating_range {
   white_rating_range   Int
   game_count           Int?
   name                 String?
-  rank                 BigInt?
+  rank                 Int?
 
-  @@unique([opening_id, white_rating_range], map: "ac1dc7c9d092b3c7a4757592b414875a")
+  @@unique([opening_id, white_rating_range], map: "34ba84ca2cba3dea8d1c4564e26dcd27")
 }
 
 model top_lichess_by_black_rating_range {
@@ -160,9 +160,9 @@ model top_lichess_by_black_rating_range {
   black_rating_range   Int
   game_count           Int?
   name                 String?
-  rank                 BigInt?
+  rank                 Int?
 
-  @@unique([opening_id, black_rating_range], map: "c874c2675c88d79afd31fcba9dfb3ff2")
+  @@unique([opening_id, black_rating_range], map: "dca8f86eceb67129ebff049651a558e7")
 }
 
 model top_lichess_by_white_rating_range {
@@ -171,14 +171,14 @@ model top_lichess_by_white_rating_range {
   white_rating_range   Int
   game_count           Int?
   name                 String?
-  rank                 BigInt?
+  rank                 Int?
 
-  @@unique([opening_id, white_rating_range], map: "4bd18784872214435fee6ac00cab3d69")
+  @@unique([opening_id, white_rating_range], map: "5b302de310ade84f80efcc05eecd7e47")
 }
 
 model win_probs {
   white_exp Float?
   black_exp Float?
   res       String? @db.Bit(2)
-  hash      String  @unique(map: "58a3f1c054d7ce9ad43ff623c0d61315")
+  hash      String  @unique(map: "571dc22c8bdc234ea7ad6a67ad731a13")
 }
