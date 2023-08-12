@@ -84,7 +84,7 @@ describe('OpeningGroupSelector', () => {
 const fakeEcoData: Array<top_eco_by_white_rating_range> = [
   {
     avg_white_elo_change: 1,
-    eco: 'A01',
+    opening_id: 'A01',
     white_rating_range: 0,
     game_count: 20000,
     name: 'Fake Opening',
@@ -92,7 +92,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    eco: 'A02',
+    opening_id: 'A02',
     white_rating_range: 1,
     game_count: 50,
     name: 'Fake Opening',
@@ -100,7 +100,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    eco: 'A02',
+    opening_id: 'A02',
     white_rating_range: 2,
     game_count: 10,
     name: 'Fake Opening',
@@ -108,7 +108,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    eco: 'A02',
+    opening_id: 'A02',
     white_rating_range: 2,
     game_count: 10001,
     name: 'Fake Opening',
@@ -116,7 +116,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    eco: 'A03',
+    opening_id: 'A03',
     white_rating_range: 2,
     game_count: 10000,
     name: 'Fake Opening',
@@ -127,7 +127,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
 const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
   {
     avg_white_elo_change: 1,
-    opening: 10,
+    opening_id: 10,
     white_rating_range: 0,
     game_count: 100000,
     name: 'Fake Opening',
@@ -135,7 +135,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    opening: 11,
+    opening_id: 11,
     white_rating_range: 3,
     game_count: 100000,
     name: 'Fake Opening',
@@ -143,7 +143,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    opening: 12,
+    opening_id: 12,
     white_rating_range: 2,
     game_count: 100000,
     name: 'Fake Opening',
@@ -151,7 +151,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
   },
   {
     avg_white_elo_change: 1,
-    opening: 13,
+    opening_id: 13,
     white_rating_range: 2,
     game_count: 100000,
     name: 'Fake Opening',

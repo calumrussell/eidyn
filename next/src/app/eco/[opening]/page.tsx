@@ -21,6 +21,7 @@ const addMissingBlack = (rating_group: Array<avg_rating_change_by_eco_black_rati
     missing.forEach(g => {
       copy.push({
         black_rating_range: g,
+        opening_id: eco ? eco : "",
         eco,
         name,
         moves,
@@ -47,6 +48,7 @@ const addMissingWhite = (rating_group: Array<avg_rating_change_by_eco_white_rati
     missing.forEach(g => {
       copy.push({
         white_rating_range: g,
+        opening_id: eco ? eco : "",
         eco,
         name,
         moves,
@@ -71,7 +73,7 @@ async function getEco(opening: string) {
 async function getAvgRatingChange(opening: string) {
   const avg_rating_change = await prisma.avg_rating_change_by_eco.findFirst({
     where: {
-      eco: opening
+      opening_id: opening
     },
   });
   return avg_rating_change;
@@ -80,7 +82,7 @@ async function getAvgRatingChange(opening: string) {
 async function getAvgRatingChangeByEloWhite(opening: string) {
   const avg_rating_change_by_elo_white = await prisma.avg_rating_change_by_eco_white_rating_range.findMany({
     where: {
-      eco: opening
+      opening_id: opening
     }
   });
   return avg_rating_change_by_elo_white;

@@ -146,8 +146,16 @@ export const TopOpenings = ({ eco_data, lichess_data, white }: TopOpeningsProps)
           <tbody>
           {
             data.map((d,i) => {
-              const name = "eco" in d ? d.eco : d.name ? d.name.length < 30 ? d.name : `${d.name.substring(0, 30)}...` : '';
-              const link = "eco" in d ? `/eco/${d.eco}` : `/lichess/${d.opening}`;
+
+              let name = "";
+              let link = ""
+              if (dataSource === 0) {
+                name = `${d.opening_id}: ${d.name?.substring(0, 30)}`;
+                link = `/eco/${d.opening_id}`;
+              } else {
+                name = `${d.name?.substring(0, 30)}`;
+                link = `/lichess/${d.opening_id}`;
+              }
 
               if (d.game_count && d.game_count > minGames) {
                 if ("avg_white_elo_change" in d) {

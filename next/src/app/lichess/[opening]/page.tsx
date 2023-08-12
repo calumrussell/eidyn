@@ -18,7 +18,7 @@ const addMissingBlack = (rating_group: Array<avg_rating_change_by_lichess_black_
     missing.forEach(g => {
       copy.push({
         black_rating_range: g,
-        opening: copy[0].opening,
+        opening_id: copy[0].opening_id,
         name: copy[0].name,
         game_count: 0,
         avg_black_elo_change: 0,
@@ -40,7 +40,7 @@ const addMissingWhite = (rating_group: Array<avg_rating_change_by_lichess_white_
     missing.forEach(g => {
       copy.push({
         white_rating_range: g,
-        opening: copy[0].opening,
+        opening_id: copy[0].opening_id,
         name: copy[0].name,
         game_count: 0,
         avg_white_elo_change: 0,
@@ -64,7 +64,7 @@ async function getLichessOpening(id: number) {
 async function getAvgRatingChange(id: number) {
   const avg_rating_change = await prisma.avg_rating_change_by_lichess.findFirst({
     where: {
-      opening: id 
+      opening_id: id 
     },
   });
   return avg_rating_change;
@@ -73,7 +73,7 @@ async function getAvgRatingChange(id: number) {
 async function getAvgRatingChangeByLichessWhite(id: number) {
   const avg_rating_change_by_elo_white = await prisma.avg_rating_change_by_lichess_white_rating_range.findMany({
     where: {
-      opening: id
+      opening_id: id
     }
   });
   return avg_rating_change_by_elo_white;
@@ -82,7 +82,7 @@ async function getAvgRatingChangeByLichessWhite(id: number) {
 async function getAvgRatingChangeByLichessBlack(id: number) {
   const avg_rating_change_by_elo_black = await prisma.avg_rating_change_by_lichess_black_rating_range.findMany({
     where: {
-      opening: id
+      opening_id: id
     }
   });
   return avg_rating_change_by_elo_black;

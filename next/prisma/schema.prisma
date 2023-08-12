@@ -11,60 +11,64 @@ model avg_rating_change_by_eco {
   avg_white_elo_change Float?
   avg_black_elo_change Float?
   game_count           Int?
-  eco                  String @unique(map: "4945531768bef70365351df6e3fd3fc8") @db.Char(3)
+  opening_id           String  @unique(map: "d1f266b9b7c2bc83d7bbe7b9f81ec80a") @db.Char
+  name                 String?
 }
 
 model avg_rating_change_by_eco_black_rating_range {
-  eco                  String  @db.Char
   avg_black_elo_change Float?
   game_count           Int?
+  opening_id           String  @db.Char
   black_rating_range   Int
+  eco                  String?
   name                 String?
   moves                String?
 
-  @@unique([eco, black_rating_range], map: "c8fb5bc323c56c42f85db308f3f5de42")
+  @@unique([opening_id, black_rating_range], map: "1739d68132039923833ccd0bb1759e9f")
 }
 
 model avg_rating_change_by_eco_white_rating_range {
-  eco                  String  @db.Char
   avg_white_elo_change Float?
   game_count           Int?
+  opening_id           String  @db.Char
   white_rating_range   Int
+  eco                  String?
   name                 String?
   moves                String?
 
-  @@unique([eco, white_rating_range], map: "15c66b2531ec1ed0b14471967b5b7726")
+  @@unique([opening_id, white_rating_range], map: "84322457b05c5c65d83b94323fa35500")
 }
 
 model avg_rating_change_by_lichess {
   avg_white_elo_change Float?
   avg_black_elo_change Float?
   game_count           Int?
-  opening              Int    @unique(map: "820acb7132820b1015f2335082a0ab75") @db.SmallInt
+  opening_id           Int     @unique(map: "e771b150ca79470680a810a5bc7e390c") @db.SmallInt
+  name                 String?
 }
 
 model avg_rating_change_by_lichess_black_rating_range {
   avg_black_elo_change Float?
   game_count           Int?
-  opening              Int     @db.SmallInt
+  opening_id           Int     @db.SmallInt
   name                 String?
   black_rating_range   Int
 
-  @@unique([opening, black_rating_range], map: "27252c006651b7b274904f49c0be8e9a")
+  @@unique([opening_id, black_rating_range], map: "ba0a10cbb249cbb4256a08ce6b6c1111")
 }
 
 model avg_rating_change_by_lichess_white_rating_range {
   avg_white_elo_change Float?
   game_count           Int?
-  opening              Int     @db.SmallInt
+  opening_id           Int     @db.SmallInt
   name                 String?
   white_rating_range   Int
 
-  @@unique([opening, white_rating_range], map: "92e944a9ca3869f9ad2eb2e6fc4fb31e")
+  @@unique([opening_id, white_rating_range], map: "f922df423e02e07a466490cad6cf863c")
 }
 
 model eco_codes {
-  eco  String  @unique(map: "b1b15e6a5d114f8e543d7671fe4ff5c0") @db.Char
+  eco  String  @unique(map: "074a557fe3e971b02b44f2cec85101d2") @db.Char
   name String?
 }
 
@@ -98,8 +102,6 @@ model matches {
   last_move                     Int?     @db.SmallInt
   res                           String?  @db.Bit(2)
   hash                          String   @id
-  prob                          Int      @default(autoincrement()) @db.SmallInt
-  win                           Boolean?
   ending_matches_endingToending ending   @relation("matches_endingToending", fields: [ending], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_ending")
   event_matches_eventToevent    event    @relation("matches_eventToevent", fields: [event], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_event")
   openings                      openings @relation(fields: [opening], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_openings")
@@ -115,13 +117,13 @@ model openings {
 model rating_change {
   white_elo_change Float?
   black_elo_change Float?
-  hash             String @unique(map: "2a89ec49102f8e2c0ac15e1ce49a7630")
+  hash             String @unique(map: "2c1dba202a9e4b4378aba703e1d1c1ba")
 }
 
 model rating_range {
   black_rating_range Int?
   white_rating_range Int?
-  hash               String @unique(map: "59010ee0d3af74f901f6797aea923960")
+  hash               String @unique(map: "34e20b3d474bbf34ae0e3ba5aea3ede5")
 }
 
 model time {
@@ -132,51 +134,51 @@ model time {
 
 model top_eco_by_black_rating_range {
   avg_black_elo_change Float?
-  eco                  String  @db.Char
+  opening_id           String  @db.Char
   black_rating_range   Int
   game_count           Int?
   name                 String?
   rank                 BigInt?
 
-  @@unique([eco, black_rating_range], map: "d66831b74f08c0e1ae76e227e8043ba9")
+  @@unique([opening_id, black_rating_range], map: "b5d950602a83ad4ba3c2434fee4c2838")
 }
 
 model top_eco_by_white_rating_range {
   avg_white_elo_change Float?
-  eco                  String  @db.Char
+  opening_id           String  @db.Char
   white_rating_range   Int
   game_count           Int?
   name                 String?
   rank                 BigInt?
 
-  @@unique([eco, white_rating_range], map: "ac236ebab6ebfd145ff4578e6392f064")
+  @@unique([opening_id, white_rating_range], map: "ac1dc7c9d092b3c7a4757592b414875a")
 }
 
 model top_lichess_by_black_rating_range {
   avg_black_elo_change Float?
-  opening              Int     @db.SmallInt
+  opening_id           Int     @db.SmallInt
   black_rating_range   Int
   game_count           Int?
   name                 String?
   rank                 BigInt?
 
-  @@unique([opening, black_rating_range], map: "2b2609236de17b4eefd9b5a3b86d6ff9")
+  @@unique([opening_id, black_rating_range], map: "c874c2675c88d79afd31fcba9dfb3ff2")
 }
 
 model top_lichess_by_white_rating_range {
   avg_white_elo_change Float?
-  opening              Int     @db.SmallInt
+  opening_id           Int     @db.SmallInt
   white_rating_range   Int
   game_count           Int?
   name                 String?
   rank                 BigInt?
 
-  @@unique([opening, white_rating_range], map: "7957d71f4dc08835e7ad33885ef4c4d2")
+  @@unique([opening_id, white_rating_range], map: "4bd18784872214435fee6ac00cab3d69")
 }
 
 model win_probs {
   white_exp Float?
   black_exp Float?
   res       String? @db.Bit(2)
-  hash      String  @unique(map: "b15edd35ff71c9af5dbc0c1d711383e0")
+  hash      String  @unique(map: "58a3f1c054d7ce9ad43ff623c0d61315")
 }
