@@ -17,5 +17,5 @@ select
     rank() over (
         partition by white_rating_range
         order by avg_white_elo_change desc
-    ) as rank
+    )::integer as rank
     from {{ ref('avg_rating_change_by_lichess_white_rating_range') }} 

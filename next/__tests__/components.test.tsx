@@ -88,7 +88,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
     white_rating_range: 0,
     game_count: 20000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -96,7 +96,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
     white_rating_range: 1,
     game_count: 50,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -104,7 +104,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
     white_rating_range: 2,
     game_count: 10,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -112,7 +112,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
     white_rating_range: 2,
     game_count: 10001,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -120,7 +120,7 @@ const fakeEcoData: Array<top_eco_by_white_rating_range> = [
     white_rating_range: 2,
     game_count: 10000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
 ];
 
@@ -131,7 +131,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
     white_rating_range: 0,
     game_count: 100000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -139,7 +139,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
     white_rating_range: 3,
     game_count: 100000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -147,7 +147,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
     white_rating_range: 2,
     game_count: 100000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
   {
     avg_white_elo_change: 1,
@@ -155,7 +155,7 @@ const fakeLichessData: Array<top_lichess_by_white_rating_range> = [
     white_rating_range: 2,
     game_count: 100000,
     name: 'Fake Opening',
-    rank: BigInt(1),
+    rank: 1,
   },
 ]
 

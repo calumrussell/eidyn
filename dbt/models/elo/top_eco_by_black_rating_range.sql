@@ -17,5 +17,5 @@ select
     rank() over (
         partition by black_rating_range
         order by avg_black_elo_change desc
-    ) as rank
+    )::integer as rank
     from {{ ref('avg_rating_change_by_eco_black_rating_range') }} 
