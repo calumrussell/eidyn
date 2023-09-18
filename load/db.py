@@ -10,6 +10,19 @@ def reverse(values):
         flip[value[1]] = value[0]
     return flip
 
+def rating_range(rating):
+    if int(rating) < 1000:
+        return 0
+    elif int(rating) > 1000 and int(rating) < 1500:
+        return 1
+    elif int(rating) > 1500 and int(rating) < 2000:
+        return 2
+    else:
+        return 3
+
+def win_prob(elo, elo_opp):
+    return 1/(1+pow(10, ((int(elo_opp)-int(elo))/400)))
+
 if __name__ == "__main__":
     pg_port = os.getenv("PG_PORT")
     pg_pwd = os.getenv("PG_PWD")
@@ -79,16 +92,26 @@ if __name__ == "__main__":
 
         white_elo = groups[0]
         black_elo = groups[1]
+        white_elo_range = rating_range(white_elo)
+        black_elo_range = rating_range(black_elo)
+        white_exp = win_prob(white_elo, black_elo)
+        black_exp = win_prob(black_elo, white_elo)
         eco = groups[8]
         last_move = groups[9]
         result = groups[6] 
         hash = groups[10]
         if result == "1-0":
             result = b"10"
+            white_elo_change = 32*(1-white_exp)
+            black_elo_change = 32*(-black_exp)
         elif result == "0-1":
             result = b"01"
+            white_elo_change = 32*(-white_exp)
+            black_elo_change = 32*(1-black_exp)
         else:
             result = b"00"
+            white_elo_change = 32*(0.5-white_exp)
+            black_elo_change = 32*(0.5-black_exp)
 
         raw_date = groups[5]
         if raw_date == "":
@@ -108,7 +131,13 @@ if __name__ == "__main__":
                 eco,
                 last_move,
                 res,
-                hash)
+                hash,
+                white_rating_range,
+                black_rating_range,
+                white_exp,
+                black_exp,
+                white_elo_change,
+                black_elo_change)
                 values
                 """
             count+=1
@@ -131,6 +160,12 @@ if __name__ == "__main__":
                 '{eco}',
                 {last_move},
                 {result},
-                '{hash}'
+                '{hash}',
+                {white_elo_range},
+                {black_elo_range},
+                {white_exp},
+                {black_exp},
+                {white_elo_change},
+                {black_elo_change}
                 ),"""
             count+=1
