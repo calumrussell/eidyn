@@ -14,9 +14,6 @@ with data as (
     eco as opening_id,
     white_rating_range
     from matches
-    left join {{ ref('win_probs') }} using(hash)
-    left join {{ ref('rating_change') }} using(hash)
-    left join {{ ref('rating_range') }} using(hash)
     left join {{ ref('eco_codes') }} using (eco)
     group by eco, white_rating_range, name
     order by white_rating_range asc 

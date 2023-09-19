@@ -101,15 +101,15 @@ if __name__ == "__main__":
         result = groups[6] 
         hash = groups[10]
         if result == "1-0":
-            result = b"10"
+            result = 1
             white_elo_change = 32*(1-white_exp)
             black_elo_change = 32*(-black_exp)
         elif result == "0-1":
-            result = b"01"
+            result = 2
             white_elo_change = 32*(-white_exp)
             black_elo_change = 32*(1-black_exp)
         else:
-            result = b"00"
+            result = 0
             white_elo_change = 32*(0.5-white_exp)
             black_elo_change = 32*(0.5-black_exp)
 
@@ -135,9 +135,7 @@ if __name__ == "__main__":
                 white_rating_range,
                 black_rating_range,
                 white_exp,
-                black_exp,
-                white_elo_change,
-                black_elo_change)
+                white_elo_change)
                 values
                 """
             count+=1
@@ -164,8 +162,5 @@ if __name__ == "__main__":
                 {white_elo_range},
                 {black_elo_range},
                 {white_exp},
-                {black_exp},
-                {white_elo_change},
-                {black_elo_change}
-                ),"""
+                {white_elo_change}),"""
             count+=1
