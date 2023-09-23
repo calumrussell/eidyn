@@ -14,9 +14,6 @@ select
     name,
     white_rating_range
     from matches
-    left join {{ ref('win_probs') }} using(hash)
-    left join {{ ref('rating_change') }} using(hash)
-    left join {{ ref('rating_range') }} using(hash)
     left join openings on openings.id=matches.opening
     where name != '?'
     group by opening, name, white_rating_range

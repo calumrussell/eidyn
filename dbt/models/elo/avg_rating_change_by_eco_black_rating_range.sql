@@ -9,14 +9,11 @@
 }}
 with data as (
     select 
-    avg(black_elo_change) as avg_black_elo_change,
-    count(black_elo_change)::integer as game_count,
+    avg(white_elo_change * -1) as avg_black_elo_change,
+    count(white_elo_change)::integer as game_count,
     eco as opening_id,
     black_rating_range
     from matches
-    left join {{ ref('win_probs') }} using(hash)
-    left join {{ ref('rating_change') }} using(hash)
-    left join {{ ref('rating_range') }} using(hash)
     left join {{ ref('eco_codes') }} using (eco)
     group by eco, black_rating_range, name
     order by black_rating_range asc 
