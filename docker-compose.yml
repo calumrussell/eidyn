@@ -3,9 +3,13 @@ services:
   eidynapp:
     container_name: eidynapp
     build:
+      network: host
       context: ./next
     env_file:
       - ./next/.env
+    depends_on:
+      - eidyntunnel
+      - eidyndb
 
   eidyntunnel:
     container_name: eidyntunnel
@@ -13,9 +17,16 @@ services:
     restart: unless-stopped
     command: tunnel run
     environment:
-      - TUNNEL_TOKEN=
+      - TUNNEL_TOKEN=${TUN_TOKEN}
 
-networks:
-  default:
-    name: eidyn
-    external: true
+  eidyndb:
+    container_name: eidyndb
+    user: 1000:1000
+    image: postgres
+    env_file:
+      - ./db/.env
+    volumes:
+       - /mnt/database/db:/pg
+    ports:
+      - 100.112.31.65:11001:5432
+    restart: unless-stopped
